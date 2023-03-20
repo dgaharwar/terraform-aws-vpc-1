@@ -1,9 +1,9 @@
 module "vpc" {
   source = "../"
 
-  aws_region = "eu-central-1"
-  aws_zones = ["eu-central-1a", "eu-central-1b", "eu-central-1c"]
-  vpc_name = "example-vpc"
+  aws_region = "us-east-1"
+  aws_zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
+  vpc_name = "dgaharwar-vpc"
   vpc_cidr = "10.0.0.0/16"
   private_subnets = "true"
 
