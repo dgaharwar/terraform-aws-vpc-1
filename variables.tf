@@ -3,7 +3,6 @@
 variable tags {
     description = "Different tag values which should be assigned to AWS resources created via Terraform"
     type = map
-    default = "tf"
 }
 
 # AWS Regions / Zones
