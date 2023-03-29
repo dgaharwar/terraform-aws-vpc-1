@@ -45,7 +45,7 @@ variable public_subnets {
 variable private_subnets {
   description = "Create private subnets"
   type = string
-#  default = false
+  default = false
 }
 
 # Resource naming
