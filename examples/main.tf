@@ -8,8 +8,8 @@ module "vpc" {
   private_subnets = false
 
   ## Tags
-  tags = {
-    Hello = "World"
+   tags = {
+    Name = "Main"
   }
 }
 
