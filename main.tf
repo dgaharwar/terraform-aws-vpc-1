@@ -17,13 +17,17 @@ resource "aws_vpc" "vpc" {
   cidr_block = var.vpc_cidr
   enable_dns_hostnames = true
 
-  tags = merge(tomap({Name = var.vpc_name}), var.tags)
+   tags = {
+    Name = "Main"
+  }
 }
 
 resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.vpc.id
 
-  tags = merge(tomap({Name = var.vpc_name}), var.tags)
+   tags = {
+    Name = "Main"
+  }
 }
 
 ############
@@ -38,7 +42,9 @@ resource "aws_subnet" "public_subnet" {
   availability_zone = var.aws_zones[count.index]
   map_public_ip_on_launch = true
 
-  tags = merge(tomap({Name =  format("%v-public-%v", var.vpc_name, var.aws_zones[count.index])}), var.tags)
+   tags = {
+    Name = "Main"
+  }
 }
 
 ############
@@ -55,7 +61,10 @@ resource aws_nat_gateway nat {
   allocation_id = element(aws_eip.nat.*.id, count.index)
   subnet_id = element(aws_subnet.public_subnet.*.id, count.index)
 
-  tags = merge(tomap({Name = format("%v-nat-%v", var.vpc_name, var.aws_zones[count.index])}), var.tags)
+   tags = {
+    Name = "Main"
+  }
+}
 
   depends_on = [aws_eip.nat, aws_internet_gateway.gw, aws_subnet.public_subnet]
 }
@@ -68,7 +77,9 @@ resource "aws_subnet" "private_subnet" {
   availability_zone = var.aws_zones[count.index]
   map_public_ip_on_launch = false
 
-  tags = merge(tomap({Name = format("%v-private-%v", var.vpc_name, var.aws_zones[count.index])}), var.tags)
+   tags = {
+    Name = "Main"
+  }
 }
 
 ############
@@ -84,7 +95,9 @@ resource "aws_route_table" "route" {
     gateway_id = aws_internet_gateway.gw.id
   }
 
-  tags = merge(tomap({Name = format("%v-public-route-table", var.vpc_name)}), var.tags)
+   tags = {
+    Name = "Main"
+  }
 }
 
 resource "aws_route_table_association" "route" {
@@ -107,7 +120,9 @@ resource "aws_route_table" "private_route" {
     gateway_id = element(aws_nat_gateway.nat.*.id, count.index)
   }
 
-  tags = merge(tomap({Name = format("%v-private-route-table-%v", var.vpc_name, var.aws_zones[count.index])}), var.tags)
+   tags = {
+    Name = "Main"
+  }
 }
 
 resource "aws_route_table_association" "private_route" {
