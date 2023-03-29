@@ -1,8 +1,9 @@
 # Tags
 
 variable tags {
-    description = "Different tag values which should be assigned to AWS resources created via Terraform)"
+    description = "Different tag values which should be assigned to AWS resources created via Terraform"
     type = map
+    default = "tf"
 }
 
 # AWS Regions / Zones
@@ -10,6 +11,7 @@ variable tags {
 variable region {
   type = string
   description = "AWS region which should be used"
+  default = "us-east-1"
 }
 
 variable access_key {
@@ -27,12 +29,19 @@ variable aws_zones {
   description = "AWS AZs (Availability zones) where subnets should be created"
 }
 
+# Public subnets
+
+variable private_subnets {
+  description = "Create public subnets"
+  type = string
+}
+
 # Private subnets
 
 variable private_subnets {
-  description = "Create both private and public subnets"
+  description = "Create private subnets"
   type = string
-#  default = false
+  default = false
 }
 
 # Resource naming
