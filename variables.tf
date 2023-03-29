@@ -27,11 +27,11 @@ variable secret_key {
   description = "Secret key which should be used"
 }
 
-#variable aws_zones {
-#  type = tolist
-#  description = "AWS AZs (Availability zones) where subnets should be created"
-#  default = ([us-east-1a])
-#}
+variable aws_zones {
+  type = tolist
+  description = "AWS AZs (Availability zones) where subnets should be created"
+  default = ([us-east-1a])
+}
 
 # Public subnets
 
