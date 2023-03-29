@@ -5,7 +5,7 @@ module "vpc" {
   aws_zones = ["us-east-1a"]
   vpc_name = "tf-vpc"
   vpc_cidr = "10.0.0.0/16"
-  private_subnets = "true"
+#  private_subnets = "true"
 
   ## Tags
   tags = {
