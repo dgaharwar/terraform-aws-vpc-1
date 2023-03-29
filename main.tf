@@ -64,7 +64,6 @@ resource aws_nat_gateway nat {
    tags = {
     Name = "Main"
   }
-}
 
   depends_on = [aws_eip.nat, aws_internet_gateway.gw, aws_subnet.public_subnet]
 }
