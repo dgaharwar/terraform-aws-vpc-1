@@ -30,7 +30,7 @@ variable aws_zones {
 
 # Public subnets
 
-variable private_subnets {
+variable public_subnets {
   description = "Create public subnets"
   type = string
 }
