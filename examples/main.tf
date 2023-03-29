@@ -3,9 +3,9 @@ module "vpc" {
 
   aws_region = "us-east-1"
   aws_zones = ["us-east-1a"]
-  vpc_name = "dgaharwar-vpc"
+  vpc_name = "tf-vpc"
   vpc_cidr = "10.0.0.0/16"
-  private_subnets = "true"
+  private_subnets = "false"
 
   ## Tags
   tags = {
@@ -14,13 +14,13 @@ module "vpc" {
 }
 
 output "vpc" {
-  value = "${module.vpc.vpc_id}"
+  value = module.vpc.vpc_id
 }
 
 output "subnets" {
-  value = "${module.vpc.subnet_ids}"
+  value = module.vpc.subnet_ids
 }
 
 output "private_subnets" {
-  value = "${module.vpc.private_subnet_ids}"
+  value = module.vpc.private_subnet_ids
 }
