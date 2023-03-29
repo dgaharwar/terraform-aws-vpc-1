@@ -3,6 +3,10 @@
 variable tags {
     description = "Different tag values which should be assigned to AWS resources created via Terraform"
     type = map
+    default = {
+        vpc = dg
+        subnet = dg
+    }
 }
 
 # AWS Regions / Zones
@@ -24,8 +28,9 @@ variable secret_key {
 }
 
 variable aws_zones {
-  type = list
+  type = tolist
   description = "AWS AZs (Availability zones) where subnets should be created"
+  default = ([us-east-1a])
 }
 
 # Public subnets
