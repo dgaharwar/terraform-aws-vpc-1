@@ -7,9 +7,19 @@ variable tags {
 
 # AWS Regions / Zones
 
-variable aws_region {
+variable region {
   type = string
   description = "AWS region which should be used"
+}
+
+variable access_key {
+  type = string
+  description = "Access key which should be used"
+}
+
+variable secret_key {
+  type = string
+  description = "Secret key which should be used"
 }
 
 variable aws_zones {
